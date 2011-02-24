@@ -13,17 +13,11 @@ package WWW::Scraper::WolframAlpha {
 
     with any_moose('X::Getopt::Dashes');
 
-    has query => (
-        isa => 'Str',
-        is => 'ro',
-        documentation => "The query to send to Wolfram Alpha",
-    );
-
     has mech => (
-        isa => "WWW::Mechanize",
-        is => 'rw',
+        isa           => "WWW::Mechanize",
+        is            => 'rw',
         documentation => "Our LWP::UserAgent instance",
-        lazy_build => 1,
+        lazy_build    => 1,
     );
 
     sub _build_mech {
@@ -60,6 +54,12 @@ package WWW::Scraper::WolframAlpha {
         return $reply;
     }
 
+    sub run {
+        my ($self, $query) = @_;
+
+        say $self->reply($query);
+    }
+
     1;
 }
 
@@ -85,5 +85,12 @@ the API.
 =head1 AUTHOR
 
 Ævar Arnfjörð Bjarmason <avar@cpan.org>
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2011 Ævar Arnfjörð Bjarmason <avar@cpan.org>
+
+This program is free software, you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =cut

@@ -1,0 +1,34 @@
+#!/usr/bin/env perl
+use v5.13.8;
+use strict;
+use warnings FATAL => "all";
+use WWW::Scraper::WolframAlpha;
+
+WWW::Scraper::WolframAlpha->new_with_options->run( $ARGV[0] // '');
+
+=encoding utf8
+
+=head1 NAME
+
+wolframalpha - Command-line interface L<WWW::Scraper::WolframAlpha>
+
+=head1 SYNOPSIS
+
+    wolframalpha '10 eur to usd'
+
+=head1 DESCRIPTION
+
+See the documentation for L<App::QuoteCC> for more information.
+
+=head1 AUTHOR
+
+Ævar Arnfjörð Bjarmason <avar@cpan.org>
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2011 Ævar Arnfjörð Bjarmason <avar@cpan.org>
+
+This program is free software, you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
