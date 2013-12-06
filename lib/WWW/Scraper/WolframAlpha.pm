@@ -6,7 +6,7 @@ package WWW::Scraper::WolframAlpha {
     use Any::Moose 'X::Getopt';
     use Any::Moose 'X::StrictConstructor';
     use URI;
-    use JSON::XS;
+    use JSON::PP;
     use WWW::Mechanize;
 
     our $VERSION = '0.01';
@@ -48,7 +48,7 @@ package WWW::Scraper::WolframAlpha {
         ]xm;
 
         # Decode it into a Perl structure
-        my $json = decode_json($json_string);
+        my $json = JSON::PP->new->loose->decode($json_string);
         my $reply = $json->{stringified};
 
         return $reply;
